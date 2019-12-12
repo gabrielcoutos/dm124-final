@@ -8,7 +8,7 @@ Base Auth username: dm124, password: alunoinatel
 
 ```bash
 POST
-*/api/delivery
+*/api/deliveries
 
 Body:
 {
@@ -27,7 +27,7 @@ Body:
 #### List Deliveries
 ```bash
 GET
-*/api/delivery
+*/api/deliveries
 Response (200 OK):
 
 Body:
@@ -50,7 +50,7 @@ Body:
 
 ```bash
 GET
-*/api/delivery/<deliveryId>
+*/api/deliveries/<deliveryId>
 
 Response (200 OK):
 Body:
@@ -72,7 +72,7 @@ Body:
 
 ```bash
 PATCH
-url/api/delivery/<deliveryId>
+url/api/deliveries/<deliveryId>
 Content-Type: application/json
 
 Body:
@@ -85,5 +85,5 @@ Body:
 
 ```bash
 DELETE
-*/api/delivery/<orderId>
+*/api/deliveries/<orderId>
 ```
