@@ -7,7 +7,8 @@ class Delivery {
                 receiverCpf,
                 isBuyer,
                 dateTime,
-                local) {
+                local,
+                status) {
         this.id = id, 
         this.orderId = orderId, 
         this.clientId = clientId, 
@@ -16,6 +17,7 @@ class Delivery {
         this.isBuyer = isBuyer,
         this.dateTime = dateTime,
         this.local = local
+        this.status = status
     }
 }
 

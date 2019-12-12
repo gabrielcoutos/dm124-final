@@ -14,7 +14,8 @@ class DeliveryService {
                 newDelivery.receiverCpf,
                 newDelivery.isBuyer,
                 newDelivery.dateTime,
-                newDelivery.local);
+                newDelivery.local,
+                "PENDENTE");
             db[delivery.id] = delivery;
             resolve(delivery);
         });
@@ -43,6 +44,7 @@ class DeliveryService {
                 delivery.isBuyer = updatedDelivery.isBuyer || delivery.isBuyer;
                 delivery.dateTimeDelivery = updatedDelivery.dateTimeDelivery || delivery.dateTimeDelivery;
                 delivery.location = updatedDelivery.location || delivery.location;
+                delivery.status = updatedDelivery.status || delivery.status;
                 resolve(delivery);
             }
             resolve(null);
