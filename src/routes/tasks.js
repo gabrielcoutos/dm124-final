@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const checkAuth = require('../middleware/check-auth');
+const notFound = require('../middleware/not-found');
 
 const StatusOk = 200;
 const StatusCreated = 201;
 const StatusNotContent = 204;
 
-router.post('/', (request, response) => {
+router.post('/', checkAuth, (request, response) => {
     const createTask = {
         status: 201,
         message: 'Created successfully'
@@ -15,7 +17,7 @@ router.post('/', (request, response) => {
         .json(createTask);
 });
 
-router.get('/', (request, response) => {
+router.get('/', checkAuth, (request, response) => {
     const tasks = {
         status: 200,
         message: 'Get all tasks'
@@ -25,7 +27,7 @@ router.get('/', (request, response) => {
         .json(tasks);
 });
 
-router.get('/:taskId', (request, response) => {
+router.get('/:taskId', checkAuth, (request, response) => {
     const task = {
         status: 200,
         message: 'Get task' + request.params.taskId
@@ -35,7 +37,7 @@ router.get('/:taskId', (request, response) => {
         .json(task);
 });
 
-router.patch('/:taskId', (request, response) => {
+router.patch('/:taskId', checkAuth, (request, response) => {
     const updateTask = {
         status: 200,
         message: 'Update task' + request.params.taskId
@@ -45,7 +47,7 @@ router.patch('/:taskId', (request, response) => {
         .json(updateTask);
 });
 
-router.delete('/:taskId', (request, response) => {
+router.delete('/:taskId', checkAuth, (request, response) => {
     const deleteTask = {
         status: 200,
         message: 'Delete task' + request.params.taskId
@@ -55,4 +57,4 @@ router.delete('/:taskId', (request, response) => {
         .json(deleteTask);
 });
 
-module.exports = router; 
+module.exports = router;
