@@ -6,9 +6,10 @@ let sequence = 0;
 class DeliveryService {
     static add(newDelivery) {
         return new Promise((resolve) => {
+            console.log(newDelivery)
             const delivery = new Delivery(++sequence, 
                 newDelivery.orderId, 
-                newDelivery.idClient, 
+                newDelivery.clientId, 
                 newDelivery.receiverName,
                 newDelivery.receiverCpf,
                 newDelivery.isBuyer,
@@ -33,14 +34,16 @@ class DeliveryService {
         });
     }
 
-    static update(taskId, updatedTask) {
+    static update(deliveryId, updatedDelivery) {
         return new Promise(async (resolve) => {
-            const task = await TaskService.getById(taskId);
-            if (task) {
-                const hasValue = updatedTask.done != null;
-                task.done = hasValue ? updatedTask.done : task.done;
-                task.description = updatedTask.description || TaskService.description;
-                resolve(task);
+            const delivery = await DeliveryService.getById(deliveryId);
+            if (delivery) {
+                delivery.receiverName = updatedDelivery.receiverName || delivery.receiverName;
+                delivery.receiverCpf = updatedDelivery.receiverCpf || delivery.receiverCpf;
+                delivery.isBuyer = updatedDelivery.isBuyer || delivery.isBuyer;
+                delivery.dateTimeDelivery = updatedDelivery.dateTimeDelivery || delivery.dateTimeDelivery;
+                delivery.location = updatedDelivery.location || delivery.location;
+                resolve(delivery);
             }
             resolve(null);
         });

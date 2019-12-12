@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const checkAuth = require('../middleware/check-auth');
 const notFound = require('../middleware/not-found');
-const deliveryService = require('../services/delivery-service');
+const deliveryService = require('../service/delivery-service');
 
 const StatusOk = 200;
 const StatusCreated = 201;
 const StatusNotContent = 204;
 
 router.post('/', checkAuth, async (request, response) => {
+    console.log(request.body)
     const createDelivery= await deliveryService.add(request.body);
     response
         .status(201)

@@ -13,8 +13,9 @@ const deliverykRouter = require('./routes/deliveries');
 app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
+app.use(express.json())
 app.use('/api/deliveries',deliverykRouter)
 app.use(notFound);
-app.use(express.json())
+
 
 module.exports = app;
